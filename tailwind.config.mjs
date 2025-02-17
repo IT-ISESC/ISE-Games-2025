@@ -10,19 +10,12 @@ export default {
     theme: {
         extend: {
             colors: {
-                lightpink: '#ffcfcf',
-                pink: '#fdb5bf',
-                orange: '#ffd199',
-                yellow: '#fbf0a9',
-                lightblue: '#baeafe',
-                blue: '#aadbfe',
-                lightbrown: '#c68c79',
-                brown: '#a77b73',
-                rose: '#B64667',
-                blackrose: '#b55a5b',
-                periwinkleBlue: '#8099E3',
-                blackbrown: '#6b574b',
-                redbrown: '#9a5555',
+                'deep-navy': '#012D48',
+                'teal-blue': '#2B7292',
+                'sky-steel': '#6195BC',
+                'dark-crimson': '#740001',
+                'ruby-red': '#C2252E',
+                'cream-beige': '#F2E8CF',
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 card: {

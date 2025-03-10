@@ -1,3 +1,21 @@
+---
+// Change header name according to the path
+const path = Astro.url.pathname
+let headerName = ''
+
+if (path == '/') {
+	headerName = 'Home'
+} else if (path === '/schedule') {
+	headerName = 'Schedule'
+} else if (path === '/scoreboard') {
+	headerName = 'Scoreboard'
+} else if (path === '/betting') {
+	headerName = 'Betting'
+} else {
+	headerName = 'ISE Games'
+}
+---
+
 <header class="border-b-2 border-[#012D48] bg-[#D9CDAF] p-6.25">
 	<div class="flex w-full items-center justify-between">
 		<img
@@ -5,7 +23,7 @@
 			src="../images/shared/isesc_logo.png"
 			alt="ISESC Logo"
 		/>
-		<h1 class="order-1 text-3xl text-[#012D48]">ISE Games</h1>
+		<h1 class="order-1 text-3xl text-[#012D48]">{headerName}</h1>
 		<div class="relative order-3">
 			<button
 				id="menuButton"
@@ -30,8 +48,8 @@
 	class="fixed top-0 right-0 z-50 h-full w-64 translate-x-full transform bg-[#F2E8CF] transition-transform duration-300 ease-in-out"
 >
 	<div class="flex justify-end p-4">
-		<button id="closeMenuButton" class="text-2xl font-bold text-[#012D48]"
-			>3 &times;
+		<button id="closeMenuButton" class="text-2xl font-bold text-[#012D48]">
+			&times;
 		</button>
 	</div>
 	<div class="py-4">
@@ -123,10 +141,6 @@
 			sideMenu.classList.remove('translate-x-full')
 			menuOverlay.classList.remove('hidden')
 			document.body.classList.add('menu-open')
-
-			// Optional: animate hamburger to X
-			const hamburgerMenu = document.querySelector('.hamburger-menu')
-			hamburgerMenu.classList.add('open')
 		})
 
 	// Close side menu (X button)

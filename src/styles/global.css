@@ -1,1 +1,54 @@
 @import 'tailwindcss';
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+@font-face {
+    font-family: 'Libre Baskerville';
+    src: url('/fonts/LibreBaskerville-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Libre Baskerville';
+    src: url('/fonts/LibreBaskerville-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Libre Baskerville';
+    src: url('/fonts/LibreBaskerville-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+.font-libre {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-libre-bold {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.font-libre-italic {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.font-libre-bold-italic {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: bold;
+    font-style: italic;
+}

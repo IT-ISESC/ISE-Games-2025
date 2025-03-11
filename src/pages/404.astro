@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/layouts.astro'
+---
+
+<Layout>
+	<main class="mt-[150px] flex items-center justify-center text-[#012D48]">
+		<div class="text-center">
+			<h1 class="text-[50px]">Error 404:</h1>
+			<h1 class="text-[50px]">Page Not Found</h1>
+			<p class="text-2xl text-[#012D48]">
+				You will be redirected to the homepage shortly.
+			</p>
+		</div>
+	</main>
+</Layout>
+
+<script>
+	setTimeout(() => {
+		window.location.href = '/'
+	}, 1000)
+</script>

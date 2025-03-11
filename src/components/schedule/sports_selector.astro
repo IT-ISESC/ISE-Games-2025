@@ -1,0 +1,48 @@
+---
+// Logic for changing between male/female schedules
+const path = Astro.url.pathname
+const isMale = path.includes('/male')
+const genderPath = isMale ? 'male' : 'female'
+
+// Split the path to check for the keywords
+const activeSport = path.split('/').pop()
+---
+
+<div class="scrollbar-hide overflow-auto bg-[#012D48] whitespace-nowrap">
+	<a
+		href={`/schedule/${genderPath}/futsal`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'futsal' ? 'border-b-[#C2252E]' : ''}`}
+	>
+		Futsal
+	</a>
+	<a
+		href={`/schedule/${genderPath}/basketball`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'basketball' ? 'border-b-[#C2252E]' : ''}`}
+	>
+		Basketball
+	</a>
+	<a
+		href={`/schedule/${genderPath}/chairball`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'chairball' ? 'border-b-[#C2252E]' : ''}`}
+	>
+		Chairball
+	</a>
+	<a
+		href={`/schedule/${genderPath}/badminton`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'badminton' ? 'border-b-[#C2252E]' : ''}`}
+	>
+		Badminton
+	</a>
+	<a
+		href={`/schedule/${genderPath}/rov`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'rov' ? 'border-b-[#C2252E]' : ''}`}
+	>
+		ROV
+	</a>
+	<a
+		href={`/schedule/${genderPath}/valorant`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'valorant' ? 'border-b-[#C2252E]' : ''}`}
+	>
+		Valorant
+	</a>
+</div>

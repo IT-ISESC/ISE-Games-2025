@@ -1,0 +1,36 @@
+---
+import Layouts from '../../../layouts/layouts.astro'
+import SportsSelector from '../../../components/schedule/sports_selector.astro'
+import ScheduleHeader from '../../../components/schedule/schedule_header.astro'
+
+// Dynamic Routes
+export function getStaticPaths() {
+	// Define possible paths
+	const genders = ['male', 'female', 'mixed']
+	const sports = [
+		'futsal',
+		'basketball',
+		'chairball',
+		'badminton',
+		'rov',
+		'valorant',
+	]
+	const paths = []
+	for (const gender of genders) {
+		for (const sport of sports) {
+			paths.push({ params: { gender, sports: sport } })
+		}
+	}
+	return paths
+}
+// Use the gender and sports name to do other things
+const { gender, sports } = Astro.params
+const sportName = sports.charAt(0).toUpperCase() + sports.slice(1)
+const title = `${sportName} ${gender.charAt(0).toUpperCase() + gender.slice(1)}`
+const imagePath = `/images/schedule/sports_logo/${sports.toLowerCase()}.png`
+---
+
+<Layouts>
+	<SportsSelector />
+	<ScheduleHeader image={imagePath} title={title} gender={gender} />
+</Layouts>

@@ -1,0 +1,78 @@
+---
+// Logic for changing between male/female schedules
+const path = Astro.url.pathname
+const isMale = path.includes('/male')
+const genderPath = isMale ? 'male' : 'female'
+
+// Split the path to check for the keywords
+const activeSport = path.split('/').pop()
+---
+
+<div
+	class="scrollbar-hide overflow-auto bg-[#012D48] whitespace-nowrap"
+	id="sports-nav"
+>
+	<a
+		href={`/schedule/${genderPath}/futsal`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'futsal' ? 'border-b-[#C2252E] active-sport' : ''}`}
+		data-sport="futsal"
+	>
+		Futsal
+	</a>
+	<a
+		href={`/schedule/${genderPath}/basketball`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'basketball' ? 'border-b-[#C2252E] active-sport' : ''}`}
+		data-sport="basketball"
+	>
+		Basketball
+	</a>
+	<a
+		href={`/schedule/female/chairball`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'chairball' ? 'border-b-[#C2252E] active-sport' : ''}`}
+		data-sport="chairball"
+	>
+		Chairball
+	</a>
+	<a
+		href={`/schedule/${genderPath}/badminton`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'badminton' ? 'border-b-[#C2252E] active-sport' : ''}`}
+		data-sport="badminton"
+	>
+		Badminton
+	</a>
+	<a
+		href={`/schedule/mixed/rov`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'rov' ? 'border-b-[#C2252E] active-sport' : ''}`}
+		data-sport="rov"
+	>
+		ROV
+	</a>
+	<a
+		href={`/schedule/mixed/valorant`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#C2252E] ${activeSport === 'valorant' ? 'border-b-[#C2252E] active-sport' : ''}`}
+		data-sport="valorant"
+	>
+		Valorant
+	</a>
+</div>
+
+<script is:inline>
+	// Script to scroll to selected sport
+	window.onload = function () {
+		const path = window.location.pathname
+		const pathParts = path.split('/')
+		const activeSport = pathParts[pathParts.length - 1]
+		const activeElement = document.querySelector(
+			`[data-sport="${activeSport}"]`
+		)
+		if (activeElement) {
+			const container = document.getElementById('sports-nav')
+			const containerWidth = container.offsetWidth
+			const elementPosition = activeElement.offsetLeft
+			const elementWidth = activeElement.offsetWidth
+			const scrollPosition =
+				elementPosition - containerWidth / 2 + elementWidth / 2
+			container.scrollLeft = Math.max(0, scrollPosition)
+		}
+	}
+</script>

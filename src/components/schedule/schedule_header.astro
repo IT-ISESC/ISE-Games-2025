@@ -1,0 +1,37 @@
+---
+interface Props {
+	image: string
+	title: string
+	gender: string
+}
+
+const { title, image, gender } = Astro.props
+
+// Logic for switching genders
+let genderImage = '/images/schedule/gender_switch/male.png'
+
+if (gender === 'female') {
+	genderImage = '/images/schedule/gender_switch/female.png'
+} else if (gender === 'mixed') {
+	// TODO change the switch images
+	genderImage = '/images/schedule/gender_switch/mixed.png'
+}
+
+const currentPath = Astro.url.pathname
+const newPath =
+	currentPath.includes('/male') && !currentPath.includes('chairball')
+		? currentPath.replace('/male', '/female')
+		: currentPath.includes('/female') && !currentPath.includes('chairball')
+			? currentPath.replace('/female', '/male')
+			: currentPath
+---
+
+<div class="m-4 flex items-center justify-between">
+	<div class="flex items-center gap-4">
+		<img class="h-[50px] w-[50px]" src={image} alt="Sports Icon" />
+		<h1 class="text-2xl font-bold text-[#012D48]">{title}</h1>
+	</div>
+	<a href={newPath}>
+		<img class="h-[40px]" src={genderImage} alt="Gender Switch" />
+	</a>
+</div>

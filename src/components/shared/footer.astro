@@ -1,6 +1,25 @@
-<footer
-	class="align-center absolute right-0 bottom-0 left-0 mx-auto flex max-w-[448px] gap-3 border-t-2 border-[#012D48] bg-[#D9CDAF] p-2.5"
->
-	<img src="../images/shared/ig_logo.png" />
-	<h1 class="text-xl">@ise.games</h1>
+<footer class="footer">
+	<div
+		class="footer-content align-center flex max-w-[448px] gap-3 border-t-2 border-[#012D48] bg-[#D9CDAF] p-2.5"
+	>
+		<img src="/images/shared/ig_logo.png" alt="Instagram Logo" />
+		<h1 class="text-xl">@ise.games</h1>
+	</div>
 </footer>
+
+<style>
+	.footer {
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		z-index: 10;
+		display: flex;
+		justify-content: center;
+	}
+
+	.footer-content {
+		width: 100%;
+		max-width: 448px;
+	}
+</style>

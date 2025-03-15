@@ -1,0 +1,77 @@
+---
+// TODO: Edit the week number here according to the schedule
+const currentWeek = 1
+
+export interface Match {
+	team1: string
+	team2: string
+	score1: number
+	score2: number
+	date: string
+	time: string
+	week: number
+	location: string
+}
+
+export interface Props {
+	matchData: Match[]
+}
+
+const { matchData } = Astro.props
+
+// Group matches by week
+const matchesByWeek = matchData.reduce(
+	(acc, match) => {
+		const week = match.week
+		if (!acc[week]) {
+			acc[week] = []
+		}
+		acc[week].push(match)
+		return acc
+	},
+	{} as Record<number, Match[]>
+)
+
+// Sort weeks numerically
+const sortedWeeks = Object.keys(matchesByWeek).sort(
+	(a, b) => Number(a) - Number(b)
+)
+---
+
+{
+	sortedWeeks.map((week) => (
+		<div id={`week-${week}`}>
+			<h1 class="m-6 mb-0 text-2xl font-bold text-[#012D48]">
+				Week {week}
+			</h1>
+			<hr class="mx-6 my-1 border-1 border-[#012D48]" />
+			{matchesByWeek[week].map((match) => (
+				<div
+					class={`m-6 rounded-xl p-3 text-[#F2E8CF] ${week < currentWeek ? 'bg-[#740001]' : 'bg-[#012D48]'}`}
+				>
+					<div>
+						<div class="flex justify-between gap-10">
+							<span class="text-xl font-bold">
+								{match.team1} vs {match.team2}
+							</span>
+							<span class="text-lg">{match.date}</span>
+						</div>
+
+						{/* If Week hasn't passed, show the location and time */}
+						<div
+							class={`flex items-center justify-between ${week < currentWeek ? 'hidden' : ''}`}
+						>
+							<span class="text-xs">@ {match.location}</span>
+							<span class="text-lg">{match.time}</span>
+						</div>
+
+						{/* Else, show finished */}
+						<div class={`${week < currentWeek ? '' : 'hidden'}`}>
+							<span>Finished</span>
+						</div>
+					</div>
+				</div>
+			))}
+		</div>
+	))
+}

@@ -6,22 +6,17 @@ import ScheduleTable from '../../../components/schedule/schedule_table.astro'
 
 // Dynamic Routes
 export function getStaticPaths() {
-	// Define possible paths
-	const genders = ['male', 'female', 'mixed']
-	const sports = [
-		'futsal',
-		'basketball',
-		'chairball',
-		'badminton',
-		'rov',
-		'valorant',
+	const paths = [
+		{ params: { gender: 'male', sports: 'basketball' } },
+		{ params: { gender: 'female', sports: 'basketball' } },
+		{ params: { gender: 'male', sports: 'futsal' } },
+		{ params: { gender: 'female', sports: 'futsal' } },
+		{ params: { gender: 'female', sports: 'chairball' } },
+		{ params: { gender: 'male', sports: 'badminton' } },
+		{ params: { gender: 'female', sports: 'badminton' } },
+		{ params: { gender: 'mixed', sports: 'rov' } },
+		{ params: { gender: 'mixed', sports: 'valorant' } },
 	]
-	const paths = []
-	for (const gender of genders) {
-		for (const sport of sports) {
-			paths.push({ params: { gender, sports: sport } })
-		}
-	}
 	return paths
 }
 

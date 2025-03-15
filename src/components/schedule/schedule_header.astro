@@ -11,16 +11,19 @@ const { title, image, gender } = Astro.props
 let genderImage = '/images/schedule/gender_switch/male.png'
 
 if (gender === 'female') {
-	// TODO change the switch images
 	genderImage = '/images/schedule/gender_switch/female.png'
 } else if (gender === 'mixed') {
+	// TODO change the switch images
 	genderImage = '/images/schedule/gender_switch/mixed.png'
 }
 
 const currentPath = Astro.url.pathname
-const newPath = currentPath.includes('/male')
-	? currentPath.replace('/male', '/female')
-	: currentPath.replace('/female', '/male')
+const newPath =
+	currentPath.includes('/male') && !currentPath.includes('chairball')
+		? currentPath.replace('/male', '/female')
+		: currentPath.includes('/female') && !currentPath.includes('chairball')
+			? currentPath.replace('/female', '/male')
+			: currentPath
 ---
 
 <div class="m-4 flex items-center justify-between">

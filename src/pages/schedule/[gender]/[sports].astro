@@ -24,119 +24,26 @@ export function getStaticPaths() {
 	}
 	return paths
 }
+
 // Use the gender and sports name to do other things
 const { gender, sports } = Astro.params
 const sportName = sports.charAt(0).toUpperCase() + sports.slice(1)
-// TODO: Remove Male/Female suffix too
-const title = `${sportName} ${gender.charAt(0).toUpperCase() + gender.slice(1)}`
 const imagePath = `/images/schedule/sports_logo/${sports.toLowerCase()}.png`
 
-const matchData = [
-	{
-		team1: 'ICE',
-		team2: 'AI',
-		score1: 2,
-		score2: 1,
-		date: '14/03/2025',
-		time: '17:00',
-		week: 1,
-		location: 'Chula',
-	},
-	{
-		team1: 'NANO',
-		team2: 'AERO',
-		score1: 3,
-		score2: 2,
-		date: '15/03/2025',
-		time: '18:30',
-		week: 1,
-		location: 'Bangkok Arena',
-	},
-	{
-		team1: 'SEMI',
-		team2: 'ADME',
-		score1: 1,
-		score2: 1,
-		date: '16/03/2025',
-		time: '19:00',
-		week: 1,
-		location: 'Tech Stadium',
-	},
-	{
-		team1: 'AI',
-		team2: 'NANO',
-		score1: 0,
-		score2: 2,
-		date: '17/03/2025',
-		time: '16:30',
-		week: 2,
-		location: 'Chula',
-	},
-	{
-		team1: 'AERO',
-		team2: 'SEMI',
-		score1: 4,
-		score2: 3,
-		date: '18/03/2025',
-		time: '19:30',
-		week: 2,
-		location: 'Innovation Field',
-	},
-	{
-		team1: 'ADME',
-		team2: 'ICE',
-		score1: 1,
-		score2: 3,
-		date: '19/03/2025',
-		time: '18:00',
-		week: 2,
-		location: 'Bangkok Arena',
-	},
-	{
-		team1: 'NANO',
-		team2: 'SEMI',
-		score1: 2,
-		score2: 2,
-		date: '20/03/2025',
-		time: '17:30',
-		week: 3,
-		location: 'Tech Stadium',
-	},
-	{
-		team1: 'ICE',
-		team2: 'AERO',
-		score1: 0,
-		score2: 1,
-		date: '21/03/2025',
-		time: '19:00',
-		week: 3,
-		location: 'Chula',
-	},
-	{
-		team1: 'AI',
-		team2: 'ADME',
-		score1: 3,
-		score2: 0,
-		date: '22/03/2025',
-		time: '18:30',
-		week: 3,
-		location: 'Innovation Field',
-	},
-	{
-		team1: 'SEMI',
-		team2: 'ICE',
-		score1: 2,
-		score2: 3,
-		date: '23/03/2025',
-		time: '20:00',
-		week: 4,
-		location: 'Bangkok Arena',
-	},
-]
+// Construct the combination key
+var combinationKey = `${sports}_${gender}`
+if (combinationKey === 'chairball_male') {
+	combinationKey = 'chairball_female'
+}
+
+// Dynamically import the sport data based on the gender and sport
+const matchData = await import(`../../../utils/variables.js`).then((module) => {
+	return module[combinationKey] // Example: 'basketball_male'
+})
 ---
 
 <Layouts>
 	<SportsSelector />
-	<ScheduleHeader image={imagePath} title={title} gender={gender} />
+	<ScheduleHeader image={imagePath} title={sportName} gender={gender} />
 	<ScheduleTable matchData={matchData} />
 </Layouts>

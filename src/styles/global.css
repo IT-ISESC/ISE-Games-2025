@@ -29,6 +29,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Work Sans';
+    src: url('/fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .font-libre {
     font-family: 'Libre Baskerville', serif;
     font-weight: normal;
@@ -51,4 +58,10 @@
     font-family: 'Libre Baskerville', serif;
     font-weight: bold;
     font-style: italic;
+}
+
+.font-work-sans {
+    font-family: 'Work Sans', serif;
+    font-weight: normal;
+    font-style: normal;
 }

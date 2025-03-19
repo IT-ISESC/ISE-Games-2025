@@ -8,13 +8,13 @@ interface Props {
 const { title, image, gender } = Astro.props
 
 // Logic for switching genders
-let genderImage = '/images/schedule/gender_switch/male.png'
+let genderImage = '/images/schedule/gender_switch/male.svg'
 
 if (gender === 'female') {
-	genderImage = '/images/schedule/gender_switch/female.png'
+	genderImage = '/images/schedule/gender_switch/female.svg'
 } else if (gender === 'mixed') {
 	// TODO change the switch images
-	genderImage = '/images/schedule/gender_switch/mixed.png'
+	genderImage = '/images/schedule/gender_switch/mixed.svg'
 }
 
 const currentPath = Astro.url.pathname

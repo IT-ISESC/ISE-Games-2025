@@ -3,14 +3,24 @@ import Layouts from '../../layouts/layouts.astro'
 ---
 
 <Layouts>
-	<h1>Schedule</h1>
-	<a href="/schedule/male/futsal">Male</a>
-	<a href="/schedule/female/futsal">Female</a>
-	<a>Mixed</a>
+	<!-- <div
+		class="m-4 flex flex-col items-center justify-center gap-4 md:flex-row"
+	>
+		<a
+			class="h-12.5 w-[180px] rounded-2xl bg-[#012D48] p-2 text-center text-2xl text-[#F2E8CF]"
+			href="/schedule/male/futsal">Male</a
+		>
+		<a
+			class="h-12.5 w-[180px] rounded-2xl bg-[#012D48] p-2 text-center text-2xl text-[#F2E8CF]"
+			href="/schedule/female/futsal">Female</a
+		>
+		<a
+			class="h-12.5 w-[180px] rounded-2xl bg-[#012D48] p-2 text-center text-2xl text-[#F2E8CF]"
+			href="/schedule/mixed/valorant">Mixed</a
+		>
+	</div> -->
 </Layouts>
 
-<!-- <script>
-	setTimeout(() => {
-		window.location.href = '/schedule/male/futsal'
-	}, 0)
-</script> -->
+<script>
+	window.location.href = '/schedule/male/futsal'
+</script>

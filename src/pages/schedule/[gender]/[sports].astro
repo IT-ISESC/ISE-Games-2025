@@ -23,7 +23,7 @@ export function getStaticPaths() {
 // Use the gender and sports name to do other things
 const { gender, sports } = Astro.params
 const sportName = sports.charAt(0).toUpperCase() + sports.slice(1)
-const imagePath = `/images/schedule/sports_logo/${sports.toLowerCase()}.png`
+const imagePath = `/images/schedule/sports_logo/${sports.toLowerCase()}.svg`
 
 // Construct the combination key
 var combinationKey = `${sports}_${gender}`

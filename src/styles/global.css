@@ -10,7 +10,7 @@
     background-color: #f2e8cf;
 
     /* Animation for the moving balls */
-    background-image: url('../images/shared/bg.svg');
+    background-image: url('/images/shared/bg.svg');
     background-size: 20%;
     background-repeat: repeat;
     animation: pan 60s linear infinite;

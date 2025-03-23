@@ -5,7 +5,9 @@ const isMale = path.includes('/male')
 const genderPath = isMale ? 'male' : 'female'
 
 // Split the path to check for the keywords
-const activeSport = path.split('/').pop()
+// More robust path handling
+const segments = path.split('/')
+const activeSport = segments.filter((segment) => segment.length > 0).pop() || ''
 ---
 
 <div
@@ -28,7 +30,7 @@ const activeSport = path.split('/').pop()
 	</a>
 	<a
 		href={`/schedule/female/chairball`}
-		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#D87F27] ${activeSport === 'chairball' ? 'border-b-[#D87F27] active-sport' : ''}`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#D87F27] ${activeSport === 'chairball' && !isMale ? 'border-b-[#D87F27] active-sport' : ''}`}
 		data-sport="chairball"
 	>
 		Chairball

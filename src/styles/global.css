@@ -55,6 +55,16 @@ body {
     }
 }
 
+@keyframes upDown {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
 @font-face {
     font-family: 'Libre Baskerville';
     src: url('/fonts/LibreBaskerville-Regular.ttf') format('truetype');
@@ -146,4 +156,8 @@ body {
 .animated_heart {
     animation: heart 3s ease-in-out infinite;
     transform-origin: center;
+}
+
+.animated-up-down {
+    animation: upDown 3s infinite ease-in-out;
 }

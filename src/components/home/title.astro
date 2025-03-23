@@ -1,0 +1,17 @@
+---
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props
+---
+
+<div id="match-details" class="m-10">
+	<h1
+		class="flex items-center justify-center text-2xl font-bold text-[#012D48]"
+	>
+		<span class="mr-4 flex-grow border-t border-[#012D48]"></span>
+		{title}
+		<span class="ml-4 flex-grow border-t border-[#012D48]"></span>
+	</h1>
+</div>

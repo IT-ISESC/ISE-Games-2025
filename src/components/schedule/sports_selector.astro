@@ -28,7 +28,7 @@ const activeSport = path.split('/').pop()
 	</a>
 	<a
 		href={`/schedule/female/chairball`}
-		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#D87F27] ${activeSport === 'chairball' ? 'border-b-[#D87F27] active-sport' : ''}`}
+		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#D87F27] ${activeSport === 'chairball' && !isMale ? 'border-b-[#D87F27] active-sport' : ''}`}
 		data-sport="chairball"
 	>
 		Chairball

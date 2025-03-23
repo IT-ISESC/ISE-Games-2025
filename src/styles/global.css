@@ -43,6 +43,18 @@ body {
     }
 }
 
+@keyframes heart {
+    0% {
+        transform: scale(0.9);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(0.9);
+    }
+}
+
 @font-face {
     font-family: 'Libre Baskerville';
     src: url('/fonts/LibreBaskerville-Regular.ttf') format('truetype');
@@ -119,9 +131,19 @@ body {
     animation: pan 60s linear infinite;
 }
 
-.animted_balls {
+.animated_balls {
     background-image: url('/images/shared/bg.svg');
     background-size: 20%;
     background-repeat: repeat;
     animation: pan 60s linear infinite;
+}
+
+.animated_spin {
+    animation: spin 30s linear infinite;
+    transform-origin: center center;
+}
+
+.animated_heart {
+    animation: heart 3s ease-in-out infinite;
+    transform-origin: center;
 }

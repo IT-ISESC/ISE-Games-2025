@@ -1,5 +1,10 @@
 ---
-// Logic for changing between male/female schedules
+interface Props {
+	page: string
+}
+const { page } = Astro.props
+
+// Logic for changing between male/female ${ page }s
 const path = Astro.url.pathname
 const isMale = path.includes('/male')
 const genderPath = isMale ? 'male' : 'female'
@@ -13,42 +18,42 @@ const activeSport = path.split('/').pop()
 	id="sports-nav"
 >
 	<a
-		href={`/schedule/${genderPath}/futsal`}
+		href={`/${page}/${genderPath}/futsal`}
 		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#D87F27] ${activeSport === 'futsal' ? 'border-b-[#D87F27] active-sport' : ''}`}
 		data-sport="futsal"
 	>
 		Futsal
 	</a>
 	<a
-		href={`/schedule/${genderPath}/basketball`}
+		href={`/${page}/${genderPath}/basketball`}
 		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#D87F27] ${activeSport === 'basketball' ? 'border-b-[#D87F27] active-sport' : ''}`}
 		data-sport="basketball"
 	>
 		Basketball
 	</a>
 	<a
-		href={`/schedule/female/chairball`}
+		href={`/${page}/female/chairball`}
 		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#D87F27] ${activeSport === 'chairball' ? 'border-b-[#D87F27] active-sport' : ''}`}
 		data-sport="chairball"
 	>
 		Chairball
 	</a>
 	<a
-		href={`/schedule/${genderPath}/badminton`}
+		href={`/${page}/${genderPath}/badminton`}
 		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#D87F27] ${activeSport === 'badminton' ? 'border-b-[#D87F27] active-sport' : ''}`}
 		data-sport="badminton"
 	>
 		Badminton
 	</a>
 	<a
-		href={`/schedule/mixed/rov`}
+		href={`/${page}/mixed/rov`}
 		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#D87F27] ${activeSport === 'rov' ? 'border-b-[#D87F27] active-sport' : ''}`}
 		data-sport="rov"
 	>
 		ROV
 	</a>
 	<a
-		href={`/schedule/mixed/valorant`}
+		href={`/${page}/mixed/valorant`}
 		class={`inline-block border-b-4 border-transparent p-3.5 text-center text-white no-underline hover:border-b-4 hover:border-b-[#D87F27] ${activeSport === 'valorant' ? 'border-b-[#D87F27] active-sport' : ''}`}
 		data-sport="valorant"
 	>

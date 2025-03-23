@@ -1,7 +1,7 @@
 ---
 import Layouts from '../../../layouts/layouts.astro'
 import SportsHeader from '../../../components/shared/sports_header/sports_header.astro'
-import ScheduleTable from '../../../components/schedule/schedule_table.astro'
+import ScoreboardTable from '../../../components/scoreboard/scoreboard_table.astro'
 
 // Dynamic Routes
 export function getStaticPaths() {
@@ -23,25 +23,14 @@ export function getStaticPaths() {
 const { gender, sports } = Astro.params
 const sportName = sports.charAt(0).toUpperCase() + sports.slice(1)
 const imagePath = `/images/schedule/sports_logo/${sports.toLowerCase()}.svg`
-
-// Construct the combination key
-var combinationKey = `${sports}_${gender}`
-if (combinationKey === 'chairball_male') {
-	combinationKey = 'chairball_female'
-}
-
-// Dynamically import the sport data based on the gender and sport
-const matchData = await import(`../../../utils/variables.js`).then((module) => {
-	return module[combinationKey] // Example: 'basketball_male'
-})
 ---
 
 <Layouts>
 	<SportsHeader
-		page="schedule"
+		page="scoreboard"
 		image={imagePath}
 		title={sportName}
 		gender={gender}
 	/>
-	<ScheduleTable matchData={matchData} />
+	<ScoreboardTable />
 </Layouts>

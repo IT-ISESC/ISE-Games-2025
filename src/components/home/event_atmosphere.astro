@@ -1,0 +1,176 @@
+<div
+	class="relative mx-auto mb-30 w-4/5 overflow-hidden rounded-lg shadow-md"
+	id="event-atmosphere"
+>
+	<div class="relative h-64 touch-pan-y">
+		<div
+			class="carousel-slide active pointer-events-none absolute top-0 left-0 h-full w-full opacity-0 transition-opacity duration-500"
+		>
+			<img
+				src="/images/home/event atmosphere/futsal_male.jpg"
+				alt="Image 1"
+				class="h-full w-full object-cover"
+			/>
+		</div>
+		<div
+			class="carousel-slide pointer-events-none absolute top-0 left-0 h-full w-full opacity-0 transition-opacity duration-500"
+		>
+			<img
+				src="/images/home/event atmosphere/futsal_female.jpg"
+				alt="Image 2"
+				class="h-full w-full object-cover"
+			/>
+		</div>
+		<div
+			class="carousel-slide pointer-events-none absolute top-0 left-0 h-full w-full opacity-0 transition-opacity duration-500"
+		>
+			<img
+				src="/images/home/event atmosphere/basketball_male.jpg"
+				alt="Image 3"
+				class="h-full w-full object-cover"
+			/>
+		</div>
+		<div
+			class="carousel-slide pointer-events-none absolute top-0 left-0 h-full w-full opacity-0 transition-opacity duration-500"
+		>
+			<img
+				src="/images/home/event atmosphere/basketball_female.jpg"
+				alt="Image 4"
+				class="h-full w-full object-cover"
+			/>
+		</div>
+		<div
+			class="carousel-slide pointer-events-none absolute top-0 left-0 h-full w-full opacity-0 transition-opacity duration-500"
+		>
+			<img
+				src="/images/home/event atmosphere/badminton_male.jpg"
+				alt="Image 5"
+				class="h-full w-full object-cover"
+			/>
+		</div>
+		<div
+			class="carousel-slide pointer-events-none absolute top-0 left-0 h-full w-full opacity-0 transition-opacity duration-500"
+		>
+			<img
+				src="/images/home/event atmosphere/badminton_female.jpg"
+				alt="Image 6"
+				class="h-full w-full object-cover"
+			/>
+		</div>
+		<div
+			class="carousel-slide pointer-events-none absolute top-0 left-0 h-full w-full opacity-0 transition-opacity duration-500"
+		>
+			<img
+				src="/images/home/event atmosphere/chairball_female.jpg"
+				alt="Image 7"
+				class="h-full w-full object-cover"
+			/>
+		</div>
+	</div>
+
+	<div
+		class="carousel-indicators absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 transform gap-2"
+	>
+		<button
+			class="bg-opacity-60 indicator active h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-white p-0 transition-colors"
+			data-index="0"></button>
+		<button
+			class="bg-opacity-60 indicator h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-white p-0 transition-colors"
+			data-index="1"></button>
+		<button
+			class="bg-opacity-60 indicator h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-white p-0 transition-colors"
+			data-index="2"></button>
+		<button
+			class="bg-opacity-60 indicator h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-white p-0 transition-colors"
+			data-index="3"></button>
+		<button
+			class="bg-opacity-60 indicator h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-white p-0 transition-colors"
+			data-index="4"></button>
+		<button
+			class="bg-opacity-60 indicator h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-white p-0 transition-colors"
+			data-index="5"></button>
+		<button
+			class="bg-opacity-60 indicator h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-white p-0 transition-colors"
+			data-index="6"></button>
+	</div>
+</div>
+
+<style>
+	.carousel-slide.active {
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	.indicator.active {
+		background-color: #9c403599;
+	}
+</style>
+
+<script>
+	// Thank you Claude 🙏
+	let currentSlide = 0
+	const slides = document.querySelectorAll('.carousel-slide')
+	const indicators = document.querySelectorAll('.indicator')
+	const totalSlides = slides.length
+	let autoRotateInterval
+	let touchStartX = 0
+	let touchEndX = 0
+	const carousel = document.getElementById('event-atmosphere')
+
+	const startAutoRotate = () => {
+		autoRotateInterval = setInterval(() => {
+			goToSlide((currentSlide + 1) % totalSlides)
+		}, 2500) // Change image rotation time
+	}
+
+	const stopAutoRotate = () => {
+		clearInterval(autoRotateInterval)
+	}
+
+	const restartAutoRotate = () => {
+		stopAutoRotate()
+		startAutoRotate()
+	}
+
+	const goToSlide = (index) => {
+		slides[currentSlide].classList.remove('active')
+		indicators[currentSlide].classList.remove('active')
+		currentSlide = index
+		slides[currentSlide].classList.add('active')
+		indicators[currentSlide].classList.add('active')
+	}
+
+	indicators.forEach((indicator, index) => {
+		indicator.addEventListener('click', () => {
+			goToSlide(index)
+			restartAutoRotate()
+		})
+	})
+
+	carousel.addEventListener('touchstart', (e) => {
+		touchStartX = e.changedTouches[0].screenX
+		stopAutoRotate()
+	})
+
+	carousel.addEventListener('touchend', (e) => {
+		touchEndX = e.changedTouches[0].screenX
+		handleSwipe()
+		startAutoRotate()
+	})
+
+	const handleSwipe = () => {
+		const swipeThreshold = 50
+		const swipeDistance = touchEndX - touchStartX
+
+		if (swipeDistance > swipeThreshold) {
+			goToSlide((currentSlide - 1 + totalSlides) % totalSlides)
+		} else if (swipeDistance < -swipeThreshold) {
+			goToSlide((currentSlide + 1) % totalSlides)
+		}
+	}
+
+	startAutoRotate()
+
+	carousel.addEventListener('mouseenter', stopAutoRotate)
+	carousel.addEventListener('mouseleave', startAutoRotate)
+</script>

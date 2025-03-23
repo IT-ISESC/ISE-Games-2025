@@ -1,12 +1,15 @@
 ---
 import Layouts from '../layouts/layouts.astro'
-import HomeButtons from '../components/home/home_buttons.astro'
+import MatchDetails from '../components/home/match_details.astro'
+import Logo from '../components/home/logo.astro'
+import EventAtmosphere from '../components/home/event_atmosphere.astro'
+import Title from '../components/home/title.astro'
 ---
 
 <Layouts>
-	<img
-		class="mt-10 mr-auto ml-auto block"
-		src="../images/home/ise_games_logo.svg"
-	/>
-	<HomeButtons />
+	<Logo />
+	<Title title="Match Details" />
+	<MatchDetails />
+	<Title title="Event Atmosphere" />
+	<EventAtmosphere />
 </Layouts>

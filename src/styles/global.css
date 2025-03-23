@@ -1,1 +1,163 @@
 @import 'tailwindcss';
+
+.mobile {
+    display: relative;
+    max-width: 448px;
+    margin: 0 auto;
+    min-height: 100vh;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f2e8cf;
+
+    /* Animation for the moving balls */
+    background-image: url('/images/shared/bg.svg');
+    background-size: 20%;
+    background-repeat: repeat;
+    animation: pan 60s linear infinite;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+/* Set up */
+
+@keyframes pan {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+@keyframes heart {
+    0% {
+        transform: scale(0.9);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(0.9);
+    }
+}
+
+@keyframes upDown {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@font-face {
+    font-family: 'Libre Baskerville';
+    src: url('/fonts/LibreBaskerville-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Libre Baskerville';
+    src: url('/fonts/LibreBaskerville-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Libre Baskerville';
+    src: url('/fonts/LibreBaskerville-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Work Sans';
+    src: url('/fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Font Classes */
+
+.font-libre {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-libre-bold {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.font-libre-italic {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.font-libre-bold-italic {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.font-work-sans {
+    font-family: 'Work Sans', serif;
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Animated Classes */
+.animated_stripes {
+    background-size: 18px 18px;
+    background-image: linear-gradient(
+        -45deg,
+        #9c4035 25%,
+        #9f4339 25%,
+        #9f4339 50%,
+        #9c4035 50%,
+        #9c4035 75%,
+        #9f4339 75%,
+        #9f4339 100%
+    );
+    animation: pan 60s linear infinite;
+}
+
+.animated_balls {
+    background-image: url('/images/shared/bg.svg');
+    background-size: 20%;
+    background-repeat: repeat;
+    animation: pan 60s linear infinite;
+}
+
+.animated_spin {
+    animation: spin 30s linear infinite;
+    transform-origin: center center;
+}
+
+.animated_heart {
+    animation: heart 3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.animated-up-down {
+    animation: upDown 3s infinite ease-in-out;
+}

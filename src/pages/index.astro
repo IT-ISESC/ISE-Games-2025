@@ -1,16 +1,15 @@
 ---
-
+import Layouts from '../layouts/layouts.astro'
+import MatchDetails from '../components/home/match_details.astro'
+import Logo from '../components/home/logo.astro'
+import EventAtmosphere from '../components/home/event_atmosphere.astro'
+import Title from '../components/home/title.astro'
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Astro</title>
-    </head>
-    <body>
-        <h1>Astro</h1>
-    </body>
-</html>
+<Layouts>
+	<Logo />
+	<Title title="Match Details" />
+	<MatchDetails />
+	<Title title="Event Atmosphere" />
+	<EventAtmosphere />
+</Layouts>

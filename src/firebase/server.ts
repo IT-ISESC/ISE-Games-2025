@@ -1,11 +1,10 @@
 import type { ServiceAccount } from 'firebase-admin';
 import { initializeApp, cert, getApps } from 'firebase-admin/app';
 
-// Put in actual env too
 const activeApps = getApps();
 const serviceAccount = {
     type: 'service_account',
-    project_id: 'vlvu2025',
+    project_id: import.meta.env.VITE_FIREBASE_PROJECT_ID,
     private_key_id: import.meta.env.VITE_FIREBASE_PRIVATE_KEY_ID,
     private_key: import.meta.env.VITE_FIREBASE_PRIVATE_KEY,
     client_email: import.meta.env.VITE_FIREBASE_CLIENT_EMAIL,

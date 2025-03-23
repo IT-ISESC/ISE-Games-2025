@@ -1,46 +1,41 @@
 ---
-import '../styles/global.css';
+import '../styles/global.css'
+import Header from '../components/shared/header.astro'
+import Footer from '../components/shared/footer.astro'
 ---
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/webp" href="/favicon-vlvu.webp" />
-        <meta name="generator" content="Astro" />
-        <meta
-            name="viewport"
-            content="width = device-width, initial-scale = 1.0"
-        />
-        <title>VLVU2025</title>
-    </head>
-    <body>
-        <main class="mobile">
-            <slot />
-        </main>
-    </body>
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-PKQ6WQ71WP"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || []
+			function gtag() {
+				dataLayer.push(arguments)
+			}
+			gtag('js', new Date())
+
+			gtag('config', 'G-PKQ6WQ71WP')
+		</script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/webp" href="/images/shared/favicon.webp" />
+		<meta name="generator" content="Astro" />
+		<meta
+			name="viewport"
+			content="width = device-width, initial-scale = 1.0"
+		/>
+		<title>ISE Game 2025</title>
+	</head>
+	<body class="font-libre">
+		<main class="mobile pb-14">
+			<Header />
+			<slot />
+			<Footer />
+		</main>
+	</body>
 </html>
-
-<style>
-    @font-face {
-        font-family: 'AtasaneeDEMO';
-        src: url('/fonts/AtsaneeDEMO-Thin.otf') format('opentype');
-    }
-
-    .mobile {
-        display: relative;
-        max-width: 448px;
-        margin: 0 auto;
-        min-height: 100vh;
-        height: auto;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    html,
-    body {
-        margin: 0;
-        width: 100%;
-        height: 100%;
-    }
-</style>

@@ -73,31 +73,39 @@ const winnerColors = {
 
 					{/* Match is Done */}
 					<div class={`${match.status === 'Done' ? '' : 'hidden'}`}>
-						<div class="flex justify-between gap-10">
-							<span
-								class={`text-xl ${match.winner === match.team1 ? 'font-bold' : ''}`}
-							>
-								<span
-									class={`${match.winner === match.team1 ? 'opacity-100' : 'opacity-0'}`}
-								>
-									•{' '}
-								</span>
-								{match.team1}
-							</span>
-							<span class="text-lg">{match.score1}</span>
-						</div>
-						<div class="flex justify-between gap-10">
-							<span
-								class={`text-xl ${match.winner === match.team2 ? 'font-bold' : ''}`}
-							>
-								<span
-									class={`${match.winner === match.team2 ? 'opacity-100' : 'opacity-0'}`}
-								>
-									•{' '}
-								</span>
-								{match.team2}
-							</span>
-							<span class="text-lg">{match.score2}</span>
+						<div class="flex h-full items-center justify-between gap-10">
+							<div class="flex w-[60%] flex-col gap-2">
+								<div class="flex justify-between gap-10">
+									<span
+										class={`w-40 truncate text-lg ${match.winner === match.team1 ? 'font-bold' : ''}`}
+									>
+										<span
+											class={`${match.winner === match.team1 ? 'opacity-100' : 'opacity-0'}`}
+										>
+											•
+										</span>
+										{match.team1}
+									</span>
+									<span class="text-lg">{match.score1}</span>
+								</div>
+								<div class="flex justify-between gap-10">
+									<span
+										class={`w-40 truncate text-lg ${match.winner === match.team2 ? 'font-bold' : ''}`}
+									>
+										<span
+											class={`${match.winner === match.team2 ? 'opacity-100' : 'opacity-0'}`}
+										>
+											•
+										</span>
+										{match.team2}
+									</span>
+									<span class="text-lg">{match.score2}</span>
+								</div>
+							</div>
+							<div class="flex h-full flex-col items-center border-l pl-2.5">
+								<span>{match.date}</span>
+								<span>{match.time}</span>
+							</div>
 						</div>
 					</div>
 				</div>

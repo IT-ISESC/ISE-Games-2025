@@ -1,16 +1,16 @@
 ---
-// TODO: Edit the week number here according to the schedule
-const currentWeek = 1
-
+const currentWeek = 0
 export interface Match {
 	team1: string
 	team2: string
 	score1: number
 	score2: number
+	winner: string
 	date: string
 	time: string
-	week: number
+	week: string
 	location: string
+	status: string
 }
 
 export interface Props {
@@ -46,28 +46,39 @@ const sortedWeeks = Object.keys(matchesByWeek).sort(
 			</h1>
 			<hr class="mx-6 my-1 border-1 border-[#012D48]" />
 			{matchesByWeek[week].map((match) => (
+				// Change box colour depending on match status
 				<div
-					class={`m-6 rounded-xl p-3 text-[#F2E8CF] ${week < currentWeek ? 'bg-[#9C4035]' : 'bg-[#D87F27]'}`}
+					class={`m-6 rounded-xl p-3 text-[#F2E8CF] ${match.status === 'Done' ? 'bg-[#9C4035]' : 'bg-[#D87F27]'}`}
 				>
-					<div>
+					{/* Match is On-going */}
+					<div
+						class={`${match.status === 'On-going' ? '' : 'hidden'}`}
+					>
 						<div class="flex justify-between gap-10">
-							<span class="text-xl font-bold">
-								{match.team1} vs {match.team2}
+							<span class="text-xl">
+								<st>{match.team1}</st> vs <st>{match.team2}</st>
 							</span>
 							<span class="text-lg">{match.date}</span>
 						</div>
-
-						{/* If Week hasn't passed, show the location and time */}
-						<div
-							class={`flex items-center justify-between ${week < currentWeek ? 'hidden' : ''}`}
-						>
+						<div class="mt-2 flex items-center justify-between">
 							<span class="text-xs">@ {match.location}</span>
-							<span class="text-lg">{match.time}</span>
+							<span class="text-xs">{match.time}</span>
 						</div>
+					</div>
 
-						{/* Else, show finished */}
-						<div class={`${week < currentWeek ? '' : 'hidden'}`}>
-							<span>Finished</span>
+					{/* Match is Done */}
+					<div class={`${match.status === 'Done' ? '' : 'hidden'}`}>
+						<div class="mb-4 flex justify-between gap-10">
+							<span>Result: {match.winner}</span>
+							<span>{match.date}</span>
+						</div>
+						<div class="flex justify-between gap-10">
+							<span class="text-xl font-bold">{match.team1}</span>
+							<span class="text-lg">{match.score1}</span>
+						</div>
+						<div class="flex justify-between gap-10">
+							<span class="text-xl font-bold">{match.team2}</span>
+							<span class="text-lg">{match.score2}</span>
 						</div>
 					</div>
 				</div>

@@ -127,7 +127,7 @@ export const futsal_male = [
         winner: '',
         date: '9/4/2025',
         time: '17:10',
-        week: 'Final',
+        week: '3',
         location: 'Court 1',
         status: 'On-going',
     },

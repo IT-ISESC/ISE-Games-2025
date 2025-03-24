@@ -1,5 +1,5 @@
 ---
-const currentWeek = 0
+// Interface for Match data
 export interface Match {
 	team1: string
 	team2: string
@@ -12,14 +12,12 @@ export interface Match {
 	location: string
 	status: string
 }
-
 export interface Props {
 	matchData: Match[]
 }
-
 const { matchData } = Astro.props
 
-// Group matches by week
+// Group and sort matches by week
 const matchesByWeek = matchData.reduce(
 	(acc, match) => {
 		const week = match.week
@@ -31,11 +29,18 @@ const matchesByWeek = matchData.reduce(
 	},
 	{} as Record<number, Match[]>
 )
-
-// Sort weeks numerically
 const sortedWeeks = Object.keys(matchesByWeek).sort(
 	(a, b) => Number(a) - Number(b)
 )
+
+// Colour mapping for winners
+const winnerColors = {
+	ADME: 'text-[#FFE840]',
+	ICE: 'text-[#68BEE0]',
+	AERO: 'text-[#DD6B62]',
+	NANO: 'text-[#72A37B]',
+	AI: 'text-[#CF97D4]',
+}
 ---
 
 {
@@ -68,8 +73,13 @@ const sortedWeeks = Object.keys(matchesByWeek).sort(
 
 					{/* Match is Done */}
 					<div class={`${match.status === 'Done' ? '' : 'hidden'}`}>
-						<div class="mb-4 flex justify-between gap-10">
-							<span>Result: {match.winner}</span>
+						<div class="mb-2 flex justify-between gap-10">
+							<span>
+								Result:
+								<span class={winnerColors[match.winner] || ''}>
+									{match.winner}
+								</span>
+							</span>
 							<span>{match.date}</span>
 						</div>
 						<div class="flex justify-between gap-10">

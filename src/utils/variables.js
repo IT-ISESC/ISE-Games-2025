@@ -14,8 +14,8 @@ export const futsal_female = [
     {
         team1: 'AI+AERO',
         team2: 'ICE',
-        score1: 1,
-        score2: 0,
+        score1: 0,
+        score2: 1,
         winner: 'ICE',
         date: '24/3/2025',
         time: '17:15',

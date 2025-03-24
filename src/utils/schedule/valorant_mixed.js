@@ -11,6 +11,7 @@ export const valorant_mixed = [
         week: '1',
         location: '-',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
     {
         team1: 'ลงขำๆ',
@@ -23,6 +24,7 @@ export const valorant_mixed = [
         week: '1',
         location: '-',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
     {
         team1: 'TBD',
@@ -35,6 +37,7 @@ export const valorant_mixed = [
         week: '1',
         location: '-',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
     {
         team1: 'TBD',
@@ -47,6 +50,7 @@ export const valorant_mixed = [
         week: '1',
         location: '-',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
 
     // Semi-Finals
@@ -61,6 +65,7 @@ export const valorant_mixed = [
         week: '1',
         location: '-',
         status: 'On-going',
+        round: 'Semi Finals',
     },
     {
         team1: 'TBD',
@@ -73,6 +78,7 @@ export const valorant_mixed = [
         week: '1',
         location: '-',
         status: 'On-going',
+        round: 'Semi Finals',
     },
 
     // Finals
@@ -87,5 +93,6 @@ export const valorant_mixed = [
         week: '3',
         location: '-',
         status: 'On-going',
+        round: 'Finals',
     },
 ]

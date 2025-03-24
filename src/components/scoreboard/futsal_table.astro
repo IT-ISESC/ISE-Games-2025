@@ -1,49 +1,21 @@
 ---
-const teamsData = [
-	{
-		team: 'ICE',
-		w: 4,
-		d: 1,
-		l: 0,
-		gf: 12,
-		ga: 3,
-	},
-	{
-		team: 'AI',
-		w: 3,
-		d: 2,
-		l: 0,
-		gf: 10,
-		ga: 4,
-	},
-	{
-		team: 'ADME',
-		w: 3,
-		d: 0,
-		l: 2,
-		gf: 8,
-		ga: 5,
-	},
-	{
-		team: 'AERO',
-		w: 2,
-		d: 1,
-		l: 2,
-		gf: 7,
-		ga: 7,
-	},
-	{
-		team: 'NANO',
-		w: 0,
-		d: 2,
-		l: 3,
-		gf: 4,
-		ga: 9,
-	},
-]
+export interface Score {
+	team: number
+	w:number
+	d:number
+	l:number
+	gf:number
+	ga:number
+}
+
+export interface Props {
+	scoreData: Score[]
+}
+
+const { scoreData } = Astro.props
 
 // Calculate MP, PTS, and GD dynamically
-const sortedTeams = teamsData
+const sortedTeams = scoreData
 	.map((team) => ({
 		...team,
 		mp: team.w + team.d + team.l, // Matches Played

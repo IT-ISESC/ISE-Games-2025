@@ -11,6 +11,7 @@ export const rov_mixed = [
         week: 'Quarter-Finals',
         location: '-',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
     {
         team1: 'TeddyBearX2',
@@ -23,6 +24,7 @@ export const rov_mixed = [
         week: 'Quarter-Finals',
         location: '-',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
     {
         team1: 'ADME di wa',
@@ -35,6 +37,7 @@ export const rov_mixed = [
         week: 'Quarter-Finals',
         location: '-',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
     {
         team1: 'โดสเต่นโดสอ๊าย',
@@ -47,6 +50,7 @@ export const rov_mixed = [
         week: 'Quarter-Finals',
         location: '-',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
 
     // Semi-Finals
@@ -61,6 +65,7 @@ export const rov_mixed = [
         week: 'Semi-Finals',
         location: '-',
         status: 'On-going',
+        round: 'Semi Finals',
     },
     {
         team1: 'TBD',
@@ -73,6 +78,7 @@ export const rov_mixed = [
         week: 'Semi-Finals',
         location: '-',
         status: 'On-going',
+        round: 'Semi Finals',
     },
 
     // Finals
@@ -87,5 +93,6 @@ export const rov_mixed = [
         week: 'Finals',
         location: '-',
         status: 'On-going',
+        round: 'Finals',
     },
 ]

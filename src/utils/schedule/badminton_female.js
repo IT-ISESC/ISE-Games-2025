@@ -10,6 +10,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 1',
         status: 'On-going',
+        round: 'Round of 16',
     },
     {
         team1: 'Player 3',
@@ -22,6 +23,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 2',
         status: 'On-going',
+        round: 'Round of 16',
     },
     {
         team1: 'Player 5',
@@ -34,6 +36,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 1',
         status: 'On-going',
+        round: 'Round of 16',
     },
     {
         team1: 'Player 7',
@@ -46,6 +49,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 2',
         status: 'On-going',
+        round: 'Round of 16',
     },
     {
         team1: 'Player 9',
@@ -58,6 +62,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 1',
         status: 'On-going',
+        round: 'Round of 16',
     },
     {
         team1: 'Player 11',
@@ -70,6 +75,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 2',
         status: 'On-going',
+        round: 'Round of 16',
     },
     {
         team1: 'Player 13',
@@ -82,6 +88,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 1',
         status: 'On-going',
+        round: 'Round of 16',
     },
     {
         team1: 'Player 15',
@@ -94,6 +101,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 2',
         status: 'On-going',
+        round: 'Round of 16',
     },
     // Quarter Finals
     {
@@ -107,6 +115,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 1',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
     {
         team1: 'Winner Match C',
@@ -119,6 +128,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 2',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
     {
         team1: 'Winner Match E',
@@ -131,6 +141,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 1',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
     {
         team1: 'Winner Match G',
@@ -143,6 +154,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 2',
         status: 'On-going',
+        round: 'Quarter Finals',
     },
     // Semi Finals
     {
@@ -156,6 +168,7 @@ export const badminton_female = [
         week: '2',
         location: 'Court 1',
         status: 'On-going',
+        round: 'Semi Finals',
     },
     {
         team1: 'Winner of Quarter Final Match 3',
@@ -168,8 +181,9 @@ export const badminton_female = [
         week: '2',
         location: 'Court 2',
         status: 'On-going',
+        round: 'Semi Finals',
     },
-    // Finalist
+    // Finals
     {
         team1: 'Winner of Quarter Final Match 3',
         team2: 'Winner of Quarter Final Match 4',
@@ -181,18 +195,6 @@ export const badminton_female = [
         week: '2',
         location: 'Court 2',
         status: 'On-going',
-    },
-    //Final
-    {
-        team1: 'TBD',
-        team2: 'TBD',
-        score1: 0,
-        score2: 0,
-        winner: '',
-        date: '9/4/2025',
-        time: '17:50',
-        week: '3',
-        location: 'Court 2',
-        status: 'On-going',
+        round: 'Finals',
     },
 ]

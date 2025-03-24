@@ -1,0 +1,60 @@
+---
+interface Props {
+	team1: string
+	team2: string
+	score1: string
+	score2: string
+	winner: string
+	date: string
+	time: string
+}
+
+const { team1, team2, score1, score2, winner, date, time } = Astro.props
+---
+
+<div class="m-6 rounded-xl bg-[#9C4035] p-3 text-[#F2E8CF]">
+	<div class="flex h-full items-center justify-between gap-10">
+		{/* Match Info */}
+		<div class="flex w-[60%] flex-col gap-2">
+			{/* Team 1 */}
+			<div class="flex justify-between gap-10">
+				<span
+					class={`w-40 truncate text-lg ${winner === team1 ? 'font-bold' : ''}`}
+				>
+					<span
+						class={`${winner === team1 ? 'opacity-100' : 'opacity-0'}`}
+					>
+						•
+					</span>
+					{team1}
+				</span>
+				<span class="text-lg">
+					{score1}
+				</span>
+			</div>
+
+			{/* Team 2 */}
+			<div class="flex justify-between gap-10">
+				<span
+					class={`w-40 truncate text-lg ${winner === team2 ? 'font-bold' : ''}`}
+				>
+					<span
+						class={`${winner === team2 ? 'opacity-100' : 'opacity-0'}`}
+					>
+						•
+					</span>
+					{team2}
+				</span>
+				<span class="text-lg">
+					{score2}
+				</span>
+			</div>
+		</div>
+
+		{/* Match Date and Time */}
+		<div class="flex h-full flex-col items-center border-l pl-2.5">
+			<span>{date}</span>
+			<span>{time}</span>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,64 @@
+---
+import FinishedSports from '../shared/finished_sports.astro'
+export interface Score {
+	team1: string
+	team2: string
+	score1: number
+	score2: number
+	round: string
+}
+export interface Props {
+	scoreData: Score[]
+}
+const { scoreData } = Astro.props
+
+// Function to sort by round order
+const roundOrder = [
+	'Round of 32',
+	'Round of 16',
+	'Quarter Finals',
+	'Semi Finals',
+	'Finals',
+]
+
+// Sort the matches by round order
+const sortedMatches = scoreData.sort(
+	(a, b) => roundOrder.indexOf(a.round) - roundOrder.indexOf(b.round)
+)
+
+// Group matches by round
+const groupedMatches = sortedMatches.reduce((groups, match) => {
+	if (!groups[match.round]) {
+		groups[match.round] = []
+	}
+	groups[match.round].push(match)
+	return groups
+}, {})
+---
+
+{
+	roundOrder.map(
+		(round) =>
+			groupedMatches[round]?.length > 0 && (
+				<div class="mb-6">
+					{/* Round Name */}
+					<h2 class="m-6 mb-0 text-2xl font-bold text-[#012D48]">
+						{round}
+					</h2>
+					<hr class="mx-6 my-1 border-1 border-[#012D48]" />
+					{/* Loop through each match */}
+					{groupedMatches[round].map((match, matchIndex) => (
+						<FinishedSports
+							team1={match.team1}
+							team2={match.team2}
+							score1={match.score1}
+							score2={match.score2}
+							date={match.date}
+							time={match.time}
+							winner={match.winner}
+						/>
+					))}
+				</div>
+			)
+	)
+}

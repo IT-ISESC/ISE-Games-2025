@@ -1,7 +1,6 @@
 ---
 import Layouts from '../../../layouts/layouts.astro'
-import SportsSelector from '../../../components/schedule/sports_selector.astro'
-import ScheduleHeader from '../../../components/schedule/schedule_header.astro'
+import SportsHeader from '../../../components/shared/sports_header/sports_header.astro'
 import ScheduleTable from '../../../components/schedule/schedule_table.astro'
 
 // Dynamic Routes
@@ -38,7 +37,11 @@ const matchData = await import(`../../../utils/variables.js`).then((module) => {
 ---
 
 <Layouts>
-	<SportsSelector />
-	<ScheduleHeader image={imagePath} title={sportName} gender={gender} />
+	<SportsHeader
+		page="schedule"
+		image={imagePath}
+		title={sportName}
+		gender={gender}
+	/>
 	<ScheduleTable matchData={matchData} />
 </Layouts>

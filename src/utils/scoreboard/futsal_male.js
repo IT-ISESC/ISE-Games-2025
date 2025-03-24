@@ -1,0 +1,42 @@
+export const futsal_male = [
+    {
+        team: 'ICE',
+        w: 0,
+        d: 0,
+        l: 0,
+        gf: 0,
+        ga: 0,
+    },
+    {
+        team: 'AI',
+        w: 0,
+        d: 0,
+        l: 0,
+        gf: 0,
+        ga: 0,
+    },
+    {
+        team: 'ADME',
+        w: 0,
+        d: 0,
+        l: 0,
+        gf: 0,
+        ga: 0,
+    },
+    {
+        team: 'AERO',
+        w: 0,
+        d: 0,
+        l: 0,
+        gf: 0,
+        ga: 0,
+    },
+    {
+        team: 'NANO',
+        w: 0,
+        d: 0,
+        l: 0,
+        gf: 0,
+        ga: 0,
+    },
+]

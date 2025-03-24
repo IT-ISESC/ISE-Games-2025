@@ -73,21 +73,30 @@ const winnerColors = {
 
 					{/* Match is Done */}
 					<div class={`${match.status === 'Done' ? '' : 'hidden'}`}>
-						<div class="mb-2 flex justify-between gap-10">
-							<span>
-								Result:
-								<span class={winnerColors[match.winner] || ''}>
-									{match.winner}
-								</span>
-							</span>
-							<span>{match.date}</span>
-						</div>
 						<div class="flex justify-between gap-10">
-							<span class="text-xl font-bold">{match.team1}</span>
+							<span
+								class={`text-xl ${match.winner === match.team1 ? 'font-bold' : ''}`}
+							>
+								<span
+									class={`${match.winner === match.team1 ? 'opacity-100' : 'opacity-0'}`}
+								>
+									•{' '}
+								</span>
+								{match.team1}
+							</span>
 							<span class="text-lg">{match.score1}</span>
 						</div>
 						<div class="flex justify-between gap-10">
-							<span class="text-xl font-bold">{match.team2}</span>
+							<span
+								class={`text-xl ${match.winner === match.team2 ? 'font-bold' : ''}`}
+							>
+								<span
+									class={`${match.winner === match.team2 ? 'opacity-100' : 'opacity-0'}`}
+								>
+									•{' '}
+								</span>
+								{match.team2}
+							</span>
 							<span class="text-lg">{match.score2}</span>
 						</div>
 					</div>

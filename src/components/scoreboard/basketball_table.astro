@@ -1,0 +1,64 @@
+---
+export interface Score {
+	team: string
+	w: number
+	l: number
+	pf: number
+	pa: number
+}
+export interface Props {
+	scoreData: Score[]
+}
+const { scoreData } = Astro.props
+
+const sortedTeams = scoreData
+	.map((team) => ({
+		...team,
+		gp: team.w + team.l,
+		pd: team.pf - team.pa,
+		pct: (team.w / (team.w + team.l)).toFixed(2),
+	}))
+	.sort((a, b) => {
+		if (a.w !== b.w) return b.w - a.w
+		if (a.pd !== b.pd) return b.pd - a.pd
+		if (a.pct !== b.pct) return parseFloat(b.pct) - parseFloat(a.pct)
+		return b.pf - a.pf
+	})
+---
+
+<div class="overflow-x-auto">
+	<table class="table-auto text-2xl text-[#012D48]">
+		<thead>
+			<tr class="font-libre-bold table-auto border-b border-[#9C4035]">
+				<th class="sticky left-0 bg-[#F2E8CF] px-4 py-2">Team</th>
+				<th class="px-4 py-2 text-center">GP</th>
+				<th class="px-4 py-2 text-center font-bold">W</th>
+				<th class="px-4 py-2 text-center">L</th>
+				<th class="px-4 py-2 text-center">PCT</th>
+				<th class="px-4 py-2 text-center">PF</th>
+				<th class="px-4 py-2 text-center">PA</th>
+				<th class="px-4 py-2 text-center">PD</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				sortedTeams.map((team) => (
+					<tr class="border-b border-[#9C4035]">
+						<td class="sticky left-0 bg-[#F2E8CF] px-4 py-2">
+							{team.team}
+						</td>
+						<td class="px-4 py-2 text-center">{team.gp}</td>
+						<td class="px-4 py-2 text-center font-bold">
+							{team.w}
+						</td>
+						<td class="px-4 py-2 text-center">{team.l}</td>
+						<td class="px-4 py-2 text-center">{team.pct}</td>
+						<td class="px-4 py-2 text-center">{team.pf}</td>
+						<td class="px-4 py-2 text-center">{team.pa}</td>
+						<td class="px-4 py-2 text-center">{team.pd}</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+</div>

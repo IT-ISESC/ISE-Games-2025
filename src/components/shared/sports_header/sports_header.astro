@@ -1,0 +1,16 @@
+---
+interface Props {
+	page: string
+	image: string
+	title: string
+	gender: string
+}
+
+const { page, title, image, gender } = Astro.props
+
+import SportsSelector from './sports_selector.astro'
+import SportsTitle from './sports_title.astro'
+---
+
+<SportsSelector page={page} />
+<SportsTitle image={image} title={title} gender={gender} />

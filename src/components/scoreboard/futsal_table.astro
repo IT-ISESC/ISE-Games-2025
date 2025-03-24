@@ -1,0 +1,66 @@
+---
+export interface Score {
+	team: number
+	w:number
+	d:number
+	l:number
+	gf:number
+	ga:number
+}
+
+export interface Props {
+	scoreData: Score[]
+}
+
+const { scoreData } = Astro.props
+
+// Calculate MP, PTS, and GD dynamically
+const sortedTeams = scoreData
+	.map((team) => ({
+		...team,
+		mp: team.w + team.d + team.l, // Matches Played
+		pts: team.w * 3 + team.d * 1, // Points
+		gd: team.gf - team.ga, // Goal Difference
+	}))
+	.sort((a, b) => {
+		if (a.pts !== b.pts) return b.pts - a.pts
+		if (a.gd !== b.gd) return b.gd - a.gd
+		return b.gf - a.gf
+	})
+---
+
+<div class="overflow-x-auto">
+    <table class="table-auto text-2xl text-[#012D48]">
+        <thead>
+            <tr class="font-libre-bold table-auto border-b border-[#9C4035]">
+                <th class="px-4 py-2 sticky left-0 bg-[#F2E8CF]">Team</th>
+                <th class="px-4 py-2 text-center">MP</th>
+                <th class="px-4 py-2 text-center">W</th>
+                <th class="px-4 py-2 text-center">D</th>
+                <th class="px-4 py-2 text-center">L</th>
+                <th class="px-4 py-2 text-center">PTS</th>
+                <th class="px-4 py-2 text-center">GF</th>
+                <th class="px-4 py-2 text-center">GA</th>
+                <th class="px-4 py-2 text-center">GD</th>
+            </tr>
+        </thead>
+        <tbody>
+            {
+                sortedTeams.map((team) => (
+                    <tr class="border-b border-[#9C4035]">
+                        <!-- Sticky Team column data -->
+                        <td class="px-4 py-2 sticky left-0 bg-[#F2E8CF]">{team.team}</td>
+                        <td class="px-4 py-2 text-center">{team.mp}</td>
+						<td class="px-4 py-2 text-center">{team.w}</td>
+                        <td class="px-4 py-2 text-center">{team.d}</td>
+                        <td class="px-4 py-2 text-center">{team.l}</td>
+                        <td class="px-4 py-2 text-center"><strong>{team.pts}</strong></td>
+                        <td class="px-4 py-2 text-center">{team.gf}</td>
+                        <td class="px-4 py-2 text-center">{team.ga}</td>
+                        <td class="px-4 py-2 text-center">{team.gd}</td>
+                    </tr>
+                ))
+            }
+        </tbody>
+    </table>
+</div>

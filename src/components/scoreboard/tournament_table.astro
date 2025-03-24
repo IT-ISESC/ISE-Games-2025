@@ -1,4 +1,5 @@
 ---
+import FinishedSports from '../shared/finished_sports.astro'
 export interface Score {
 	team1: string
 	team2: string
@@ -35,76 +36,29 @@ const groupedMatches = sortedMatches.reduce((groups, match) => {
 }, {})
 ---
 
-<div class="matches-container">
-	{
-		roundOrder.map((round) => (
-			<div key={round} class="mb-6">
-				{/* Round Name */}
-				<h2 class="m-6 mb-0 text-2xl font-bold text-[#012D48]">
-					{round}
-				</h2>
-				<hr class="mx-6 my-1 border-1 border-[#012D48]" />
-
-				<div class="matches">
-					{groupedMatches[round]?.length > 0 ? (
-						groupedMatches[round].map((match, matchIndex) => (
-							<div
-								key={matchIndex}
-								class="m-6 rounded-xl bg-[#9C4035] p-3 text-[#F2E8CF]"
-							>
-								<div class="flex h-full items-center justify-between gap-10">
-									{/* Match Info */}
-									<div class="flex w-[60%] flex-col gap-2">
-										{/* Team 1 */}
-										<div class="flex justify-between gap-10">
-											<span
-												class={`w-40 truncate text-lg ${match.winner === match.team1 ? 'font-bold' : ''}`}
-											>
-												<span
-													class={`${match.winner === match.team1 ? 'opacity-100' : 'opacity-0'}`}
-												>
-													•
-												</span>
-												{match.team1}
-											</span>
-											<span class="text-lg">
-												{match.score1}
-											</span>
-										</div>
-
-										{/* Team 2 */}
-										<div class="flex justify-between gap-10">
-											<span
-												class={`w-40 truncate text-lg ${match.winner === match.team2 ? 'font-bold' : ''}`}
-											>
-												<span
-													class={`${match.winner === match.team2 ? 'opacity-100' : 'opacity-0'}`}
-												>
-													•
-												</span>
-												{match.team2}
-											</span>
-											<span class="text-lg">
-												{match.score2}
-											</span>
-										</div>
-									</div>
-
-									{/* Match Date and Time */}
-									<div class="flex h-full flex-col items-center border-l pl-2.5">
-										<span>{match.date}</span>
-										<span>{match.time}</span>
-									</div>
-								</div>
-							</div>
-						))
-					) : (
-						<p class="text-center">
-							No matches for this round yet.
-						</p>
-					)}
+{
+	roundOrder.map(
+		(round) =>
+			groupedMatches[round]?.length > 0 && (
+				<div class="mb-6">
+					{/* Round Name */}
+					<h2 class="m-6 mb-0 text-2xl font-bold text-[#012D48]">
+						{round}
+					</h2>
+					<hr class="mx-6 my-1 border-1 border-[#012D48]" />
+					{/* Loop through each match */}
+					{groupedMatches[round].map((match, matchIndex) => (
+						<FinishedSports
+							team1={match.team1}
+							team2={match.team2}
+							score1={match.score1}
+							score2={match.score2}
+							date={match.date}
+							time={match.time}
+							winner={match.winner}
+						/>
+					))}
 				</div>
-			</div>
-		))
-	}
-</div>
+			)
+	)
+}

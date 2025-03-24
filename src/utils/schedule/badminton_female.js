@@ -105,8 +105,8 @@ export const badminton_female = [
     },
     // Quarter Finals
     {
-        team1: 'Winner Match A',
-        team2: 'Winner Match B',
+        team1: 'Winner A',
+        team2: 'Winner B',
         score1: 0,
         score2: 0,
         winner: '',
@@ -118,8 +118,8 @@ export const badminton_female = [
         round: 'Quarter Finals',
     },
     {
-        team1: 'Winner Match C',
-        team2: 'Winner Match D',
+        team1: 'Winner C',
+        team2: 'Winner D',
         score1: 0,
         score2: 0,
         winner: '',
@@ -131,8 +131,8 @@ export const badminton_female = [
         round: 'Quarter Finals',
     },
     {
-        team1: 'Winner Match E',
-        team2: 'Winner Match F',
+        team1: 'Winner E',
+        team2: 'Winner F',
         score1: 0,
         score2: 0,
         winner: '',
@@ -144,8 +144,8 @@ export const badminton_female = [
         round: 'Quarter Finals',
     },
     {
-        team1: 'Winner Match G',
-        team2: 'Winner Match H',
+        team1: 'Winner G',
+        team2: 'Winner H',
         score1: 0,
         score2: 0,
         winner: '',
@@ -158,8 +158,8 @@ export const badminton_female = [
     },
     // Semi Finals
     {
-        team1: 'Winner of Quarter Final Match 1',
-        team2: 'Winner of Quarter Final Match 2',
+        team1: 'Winner QF 1',
+        team2: 'Winner QF 2',
         score1: 0,
         score2: 0,
         winner: '',
@@ -171,8 +171,8 @@ export const badminton_female = [
         round: 'Semi Finals',
     },
     {
-        team1: 'Winner of Quarter Final Match 3',
-        team2: 'Winner of Quarter Final Match 4',
+        team1: 'Winner QF 3',
+        team2: 'Winner QF 4',
         score1: 0,
         score2: 0,
         winner: '',
@@ -185,8 +185,8 @@ export const badminton_female = [
     },
     // Finals
     {
-        team1: 'Winner of Quarter Final Match 3',
-        team2: 'Winner of Quarter Final Match 4',
+        team1: 'Winner SF 1',
+        team2: 'Winner SF 2',
         score1: 0,
         score2: 0,
         winner: '',

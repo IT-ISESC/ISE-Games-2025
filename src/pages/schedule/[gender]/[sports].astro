@@ -31,7 +31,9 @@ if (combinationKey === 'chairball_male') {
 }
 
 // Dynamically import the sport data based on the gender and sport
-const matchData = await import(`../../../utils/variables.js`).then((module) => {
+const matchData = await import(
+	`../../../utils/schedule/${combinationKey}.js`
+).then((module) => {
 	return module[combinationKey] // Example: 'basketball_male'
 })
 ---

@@ -32,15 +32,6 @@ const matchesByWeek = matchData.reduce(
 const sortedWeeks = Object.keys(matchesByWeek).sort(
 	(a, b) => Number(a) - Number(b)
 )
-
-// Colour mapping for winners
-const winnerColors = {
-	ADME: 'text-[#FFE840]',
-	ICE: 'text-[#68BEE0]',
-	AERO: 'text-[#DD6B62]',
-	NANO: 'text-[#72A37B]',
-	AI: 'text-[#CF97D4]',
-}
 ---
 
 {
@@ -51,7 +42,6 @@ const winnerColors = {
 			</h1>
 			<hr class="mx-6 my-1 border-1 border-[#012D48]" />
 			{matchesByWeek[week].map((match) => (
-				// Change box colour depending on match status
 				<div
 					class={`m-6 rounded-xl p-3 text-[#F2E8CF] ${match.status === 'Done' ? 'bg-[#9C4035]' : 'bg-[#D87F27]'}`}
 				>

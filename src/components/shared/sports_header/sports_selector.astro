@@ -10,7 +10,8 @@ const isMale = path.includes('/male')
 const genderPath = isMale ? 'male' : 'female'
 
 // Split the path to check for the keywords
-const activeSport = path.split('/').pop()
+const segments = path.split('/')
+const activeSport = segments.filter((segment) => segment.length > 0).pop() || ''
 ---
 
 <div

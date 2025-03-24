@@ -1,0 +1,96 @@
+---
+import Layouts from '../../../layouts/layouts.astro'
+import SportsHeader from '../../../components/shared/sports_header/sports_header.astro'
+import FutsalTable from '../../../components/scoreboard/futsal_table.astro'
+import BasketballTable from '../../../components/scoreboard/basketball_table.astro'
+import TournamentTable from '../../../components/scoreboard/tournament_table.astro'
+
+// Dynamic Routes
+export function getStaticPaths() {
+	const paths = [
+		{ params: { gender: 'male', sports: 'basketball' } },
+		{ params: { gender: 'female', sports: 'basketball' } },
+		{ params: { gender: 'male', sports: 'futsal' } },
+		{ params: { gender: 'female', sports: 'futsal' } },
+		{ params: { gender: 'female', sports: 'chairball' } },
+		{ params: { gender: 'male', sports: 'badminton' } },
+		{ params: { gender: 'female', sports: 'badminton' } },
+		{ params: { gender: 'mixed', sports: 'rov' } },
+		{ params: { gender: 'mixed', sports: 'valorant' } },
+	]
+	return paths
+}
+
+// Use the gender and sports name to do other things
+const { gender, sports } = Astro.params
+const sportName = sports.charAt(0).toUpperCase() + sports.slice(1)
+const imagePath = `/images/schedule/sports_logo/${sports.toLowerCase()}.svg`
+
+var combinationKey = `${sports}_${gender}`
+if (combinationKey === 'chairball_male') {
+	combinationKey = 'chairball_female'
+}
+
+let page = 'scoreboard'
+if (
+	combinationKey === 'badminton_male' ||
+	combinationKey === 'badminton_female' ||
+	combinationKey === 'rov_mixed' ||
+	combinationKey === 'valorant_mixed'
+) {
+	page = 'schedule'
+}
+
+// Dynamically import the sport data based on the gender and sport
+const data = await import(`../../../utils/${page}/${combinationKey}.js`)
+	.then((module) => {
+		return module[combinationKey] || {}
+	})
+	.catch((err) => {
+		console.error('Error loading module:', err)
+		return [
+			{
+				team1: 'Dummy Data',
+				team2: 'Dummy Data',
+				score1: 0,
+				score2: 0,
+				winner: 'Dummy Data',
+				date: 'Dummy Data',
+				time: 'Dummy Data',
+				week: 'Dummy Data',
+				location: 'Dummy Data',
+				status: 'On-going',
+				round: 'Round of 32',
+			},
+		]
+	})
+---
+
+<Layouts>
+	<SportsHeader
+		page="scoreboard"
+		image={imagePath}
+		title={sportName}
+		gender={gender}
+	/>
+
+	{
+		// Futsal Scoreboard
+		combinationKey === 'futsal_male' ||
+		combinationKey === 'futsal_female' ? (
+			<FutsalTable scoreData={data} />
+		) : // Basketball Scoreboard
+		combinationKey === 'basketball_male' ||
+		  combinationKey === 'basketball_female' ? (
+			<BasketballTable scoreData={data} />
+		) : // Tournament Scoreboard
+		combinationKey === 'badminton_male' ||
+		  combinationKey === 'badminton_female' ||
+		  combinationKey === 'rov_mixed' ||
+		  combinationKey === 'valorant_mixed' ? (
+			<TournamentTable scoreData={data} />
+		) : (
+			<img src="/images/scoreboard/under_construction.png" />
+		)
+	}
+</Layouts>

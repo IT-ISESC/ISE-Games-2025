@@ -40,6 +40,7 @@ if (
 }
 
 // Dynamically import the sport data based on the gender and sport
+// Make a GET request to the API
 const BASE_URL =
 	process.env.NODE_ENV === 'production'
 		? 'https://ise-games-2025.vercel.app'
@@ -48,19 +49,28 @@ const apiUrl = `${BASE_URL}/api/${combinationKey}`
 
 const matchData = await fetch(apiUrl)
 	.then(async (response) => {
+		if (!response.ok) {
+			console.error(
+				'❌ API returned an error:',
+				response.status,
+				await response.text()
+			)
+			return []
+		}
 		const text = await response.text()
 		try {
-			const jsonData = JSON.parse(text)
-			return jsonData
+			return JSON.parse(text)
 		} catch (error) {
-			console.error('❌ API did not return JSON. Raw response:', text)
-			throw new Error('Invalid JSON response')
+			console.error('❌ API response is not JSON:', text)
+			return []
 		}
 	})
 	.catch((error) => {
-		console.error('🚨 Error fetching match data:', error)
-		return null
+		console.error('🚨 Network error fetching match data:', error)
+		return []
 	})
+
+console.log('✅ Match Data:', matchData)
 ---
 
 <Layouts>

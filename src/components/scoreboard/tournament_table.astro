@@ -27,7 +27,7 @@ const sortedMatches = scoreData.sort(
 )
 
 // Group matches by round
-const groupedMatches = sortedMatches.reduce((groups, match) => {
+const groupedMatches = (sortedMatches ?? []).reduce((groups, match) => {
 	if (!groups[match.round]) {
 		groups[match.round] = []
 	}

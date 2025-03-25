@@ -18,7 +18,7 @@ export interface Props {
 const { matchData } = Astro.props
 
 // Group and sort matches by week
-const matchesByWeek = matchData.reduce(
+const matchesByWeek = (Array.isArray(matchData) ? matchData : []).reduce(
 	(acc, match) => {
 		const week = match.week
 		if (!acc[week]) {
@@ -29,6 +29,7 @@ const matchesByWeek = matchData.reduce(
 	},
 	{} as Record<number, Match[]>
 )
+
 const sortedWeeks = Object.keys(matchesByWeek).sort(
 	(a, b) => Number(a) - Number(b)
 )

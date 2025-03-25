@@ -40,7 +40,7 @@ if (
 }
 
 // Dynamically import the sport data based on the gender and sport
-const apiUrl = `http://localhost:4321/api/${combinationKey}`
+const apiUrl = `https://ise-games-2025.vercel.app/api/${combinationKey}`
 const matchData = await fetch(apiUrl)
 	.then((response) => response.json())
 	.then((data) => {

@@ -31,7 +31,7 @@ if (combinationKey === 'chairball_male') {
 }
 
 // Make a GET request to the API
-const apiUrl = `http://localhost:4321/api/${combinationKey}`
+const apiUrl = `https://ise-games-2025.vercel.app/api/${combinationKey}`
 const matchData = await fetch(apiUrl)
 	.then((response) => response.json())
 	.then((data) => {

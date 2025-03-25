@@ -1,4 +1,21 @@
-export const prerender = false
+export async function getStaticPaths() {
+    return [
+        { params: { collectionName: 'futsal_male' } },
+        { params: { collectionName: 'futsal_female' } },
+        { params: { collectionName: 'basketball_male' } },
+        { params: { collectionName: 'basketball_female' } },
+        { params: { collectionName: 'chairball_female' } },
+        { params: { collectionName: 'futsal_male_score' } },
+        { params: { collectionName: 'futsal_female_score' } },
+        { params: { collectionName: 'basketball_male_score' } },
+        { params: { collectionName: 'basketball_female_score' } },
+        { params: { collectionName: 'chairball_female_score' } },
+        { params: { collectionName: 'badminton_male' } },
+        { params: { collectionName: 'badminton_female' } },
+        { params: { collectionName: 'rov_mixed' } },
+        { params: { collectionName: 'valorant_mixed' } },
+    ]
+}
 
 import type { APIRoute } from 'astro'
 import { getFirestore } from 'firebase-admin/firestore'

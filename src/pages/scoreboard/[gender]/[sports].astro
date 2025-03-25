@@ -41,7 +41,6 @@ if (
 
 // Dynamically import the sport data based on the gender and sport
 const apiUrl = `http://localhost:4321/api/${combinationKey}`
-let data = []
 const matchData = await fetch(apiUrl)
 	.then((response) => response.json())
 	.then((data) => {
@@ -64,10 +63,10 @@ const matchData = await fetch(apiUrl)
 	{
 		// Futsal Scoreboard
 		combinationKey.includes('futsal') ? (
-			<FutsalTable scoreData={data} />
+			<FutsalTable scoreData={matchData} />
 		) : // Basketball Scoreboard
 		combinationKey.includes('basketball') ? (
-			<BasketballTable scoreData={data} />
+			<BasketballTable scoreData={matchData} />
 		) : // Tournament Scoreboard (Chairball under construction)
 		combinationKey.includes('chairball') ? (
 			<img
@@ -76,7 +75,7 @@ const matchData = await fetch(apiUrl)
 			/>
 		) : (
 			// Default Tournament Table if no specific match
-			<TournamentTable scoreData={data} />
+			<TournamentTable scoreData={matchData} />
 		)
 	}
 </Layouts>

@@ -31,38 +31,25 @@ if (combinationKey === 'chairball_male') {
 	combinationKey = 'chairball_female'
 }
 
-let page = 'scoreboard'
 if (
-	combinationKey === 'badminton_male' ||
-	combinationKey === 'badminton_female' ||
-	combinationKey === 'rov_mixed' ||
-	combinationKey === 'valorant_mixed'
+	combinationKey.includes('futsal') ||
+	combinationKey.includes('basketball') ||
+	combinationKey.includes('chairball')
 ) {
-	page = 'schedule'
+	combinationKey = `${combinationKey}_score`
 }
 
 // Dynamically import the sport data based on the gender and sport
-const data = await import(`../../../utils/${page}/${combinationKey}.js`)
-	.then((module) => {
-		return module[combinationKey] || {}
+const apiUrl = `http://localhost:4321/api/${combinationKey}`
+let data = []
+const matchData = await fetch(apiUrl)
+	.then((response) => response.json())
+	.then((data) => {
+		return data
 	})
-	.catch((err) => {
-		console.error('Error loading module:', err)
-		return [
-			{
-				team1: 'Dummy Data',
-				team2: 'Dummy Data',
-				score1: 0,
-				score2: 0,
-				winner: 'Dummy Data',
-				date: 'Dummy Data',
-				time: 'Dummy Data',
-				week: 'Dummy Data',
-				location: 'Dummy Data',
-				status: 'On-going',
-				round: 'Round of 32',
-			},
-		]
+	.catch((error) => {
+		console.error('Error fetching match data:', error)
+		return null
 	})
 ---
 
@@ -76,21 +63,20 @@ const data = await import(`../../../utils/${page}/${combinationKey}.js`)
 
 	{
 		// Futsal Scoreboard
-		combinationKey === 'futsal_male' ||
-		combinationKey === 'futsal_female' ? (
+		combinationKey.includes('futsal') ? (
 			<FutsalTable scoreData={data} />
 		) : // Basketball Scoreboard
-		combinationKey === 'basketball_male' ||
-		  combinationKey === 'basketball_female' ? (
+		combinationKey.includes('basketball') ? (
 			<BasketballTable scoreData={data} />
-		) : // Tournament Scoreboard
-		combinationKey === 'badminton_male' ||
-		  combinationKey === 'badminton_female' ||
-		  combinationKey === 'rov_mixed' ||
-		  combinationKey === 'valorant_mixed' ? (
-			<TournamentTable scoreData={data} />
+		) : // Tournament Scoreboard (Chairball under construction)
+		combinationKey.includes('chairball') ? (
+			<img
+				src="/images/scoreboard/under_construction.png"
+				alt="Under Construction"
+			/>
 		) : (
-			<img src="/images/scoreboard/under_construction.png" />
+			// Default Tournament Table if no specific match
+			<TournamentTable scoreData={data} />
 		)
 	}
 </Layouts>

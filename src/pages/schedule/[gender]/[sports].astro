@@ -30,12 +30,17 @@ if (combinationKey === 'chairball_male') {
 	combinationKey = 'chairball_female'
 }
 
-// Dynamically import the sport data based on the gender and sport
-const matchData = await import(
-	`../../../utils/schedule/${combinationKey}.js`
-).then((module) => {
-	return module[combinationKey] // Example: 'basketball_male'
-})
+// Make a GET request to the API
+const apiUrl = `http://localhost:4321/api/${combinationKey}`
+const matchData = await fetch(apiUrl)
+	.then((response) => response.json())
+	.then((data) => {
+		return data
+	})
+	.catch((error) => {
+		console.error('Error fetching match data:', error)
+		return null
+	})
 ---
 
 <Layouts>

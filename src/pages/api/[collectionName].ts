@@ -25,6 +25,18 @@ const db = getFirestore(app)
 
 export const GET: APIRoute = async ({ params }) => {
     const { collectionName } = params
+    console.log('📌 API Request for Collection:', collectionName) // Debug log
+
+    if (!collectionName) {
+        return new Response(
+            JSON.stringify({
+                success: false,
+                message: 'Missing collection name in request',
+            }),
+            { status: 400 }
+        )
+    }
+
     try {
         const snapshot = await db.collection(collectionName).get()
         const items = snapshot.docs.map((doc) => ({
@@ -37,11 +49,12 @@ export const GET: APIRoute = async ({ params }) => {
             headers: { 'Content-Type': 'application/json' },
         })
     } catch (error) {
-        console.error(`Error fetching ${collectionName}`, error)
+        console.error(`❌ Error fetching ${collectionName}`, error)
         return new Response(
             JSON.stringify({
                 success: false,
                 message: `Failed to fetch ${collectionName}`,
+                error: error.message, // Include error details
             }),
             { status: 500 }
         )

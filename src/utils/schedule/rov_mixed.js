@@ -17,9 +17,9 @@ export const rov_mixed = [
     {
         team1: 'Conceptus Deletus',
         team2: 'ADME di wa',
-        score1: 0,
+        score1: 2,
         score2: 0,
-        winner: '',
+        winner: 'Conceptus Deletus',
         date: '25/3/2025',
         time: 'TBD',
         week: '1',
@@ -31,8 +31,8 @@ export const rov_mixed = [
         team1: 'มายองเนส',
         team2: 'TeddyBearX2',
         score1: 0,
-        score2: 0,
-        winner: '',
+        score2: 2,
+        winner: 'TeddyBearX2',
         date: '25/3/2025',
         time: 'TBD',
         week: '1',
@@ -43,9 +43,9 @@ export const rov_mixed = [
     {
         team1: 'ยังไม่มีชื่อกลุ่ม',
         team2: 'NiceTired',
-        score1: 0,
-        score2: 0,
-        winner: '',
+        score1: 1,
+        score2: 2,
+        winner: 'NiceTired',
         date: '25/3/2025',
         time: 'TBD',
         week: '1',
@@ -56,8 +56,8 @@ export const rov_mixed = [
 
     // Semi-Finals
     {
-        team1: 'TBD',
-        team2: 'TBD',
+        team1: 'อุกะอุกะ',
+        team2: 'Conceptus Deletus',
         score1: 0,
         score2: 0,
         winner: '',
@@ -69,8 +69,8 @@ export const rov_mixed = [
         round: 'Semi Finals',
     },
     {
-        team1: 'TBD',
-        team2: 'TBD',
+        team1: 'TeddybearX2',
+        team2: 'NiceTired',
         score1: 0,
         score2: 0,
         winner: '',
